@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
 import cloud_icon from "../assets/cloud.png";
@@ -101,12 +102,17 @@ const Weather = () => {
   };
 
   const search = async (city) => {
+    if (city === "") return toast.error("Please enter a city name");
+
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
         import.meta.env.VITE_APP_ID
       }`;
       const response = await fetch(url);
       const data = await response.json();
+      if (data.cod === "404") {
+        return toast.error("City not found");
+      }
       console.log(data);
 
       const icon = allIcons[data.weather[0].icon] || clear_icon;
@@ -118,12 +124,16 @@ const Weather = () => {
         icon: icon,
       });
     } catch (error) {
+      
+      
       console.log(error);
+      setWeather(false);
+      {toast.error("Unable to fetch API")}
     }
   };
 
   useEffect(() => {
-    search("Canada");
+    search("Chandigarh");
   }, []);
   return (
     <WeatherContainer>
@@ -137,25 +147,33 @@ const Weather = () => {
           }}
         />
       </SearchBar>
-      <WeatherImg src={weather.icon} alt="" />
-      <Temperature>{weather.temperature}</Temperature>
-      <Location>{weather.location}</Location>
-      <WeatherData>
-        <Column>
-          <img src={humidity_icon} alt="" />
-          <div>
-            <p>{weather.humidity} %</p>
-            <span>Humidity</span>
-          </div>
-        </Column>
-        <Column>
-          <img src={wind_icon} alt="" />
-          <div>
-            <p>{weather.windSpeed} km/h</p>
-            <span>Wind Speed</span>
-          </div>
-        </Column>
-      </WeatherData>
+      {weather ? (
+        <>
+          <WeatherImg src={weather.icon} alt="" />
+          <Temperature>{weather.temperature}°c</Temperature>
+          <Location>{weather.location}</Location>
+          <WeatherData>
+            <Column>
+              <img src={humidity_icon} alt="" />
+              <div>
+                <p>{weather.humidity} %</p>
+                <span>Humidity</span>
+              </div>
+            </Column>
+            <Column>
+              <img src={wind_icon} alt="" />
+              <div>
+                <p>{weather.windSpeed} km/h</p>
+                <span>Wind Speed</span>
+              </div>
+            </Column>
+          </WeatherData>
+        </>
+      ) : (
+        <>
+        
+        </>
+      )}
     </WeatherContainer>
   );
 };
