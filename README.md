@@ -8,7 +8,8 @@ Check out the live version of the app [here](https://simple-weather-app-ten-psi.
 
 ## Screenshots
 
-![Screenshot 1](![image](https://github.com/sahiillx/simple-weather-app/assets/69302208/2efea58b-20af-483d-80c0-55703aaec221))
+![ss](https://github.com/sahiillx/simple-weather-app/assets/69302208/a2d055ca-e842-4788-ada8-3df21931c831)
+
 
 
 ## Features
