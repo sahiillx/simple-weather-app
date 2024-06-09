@@ -19,17 +19,20 @@ const WeatherContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 390px) {
-    padding: 20px;
-    
-  
+  @media (max-width: 420px) {
+    max-width: 90%;
   }
+
 
 `;
 const SearchBar = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (max-width: 420px) {
+    gap: 6px;
+  }
 `;
 const Input = styled.input`
   height: 50px;
@@ -40,6 +43,13 @@ const Input = styled.input`
   color: #626262;
   background: #ebfffc;
   font-size: 18px;
+
+  @media (max-width: 420px) {
+    font-size: 14px;
+    height: 40px;
+
+  }
+
 `;
 const Img = styled.img`
   width: 50px;
@@ -47,20 +57,39 @@ const Img = styled.img`
   border-radius: 50%;
   background: #ebfffc;
   cursor: pointer;
+
+  @media (max-width: 420px) {
+    width: 40px;
+    padding: 10px;
+  }
 `;
 
 const WeatherImg = styled.img`
   width: 150px;
   margin: 30px 0;
+
+  @media (max-width: 420px) {
+    width: 100px;
+    margin: 20px 0;
+  }
 `;
 const Temperature = styled.p`
   color: #fff;
   font-size: 80px;
   line-height: 1;
+
+  @media (max-width: 420px) {
+    font-size: 60px;
+  }
+
 `;
 const Location = styled.p`
   color: #fff;
   font-size: 40px;
+
+  @media (max-width: 420px) {
+    font-size: 30px;
+  }
 `;
 
 const WeatherData = styled.div`
@@ -69,6 +98,10 @@ const WeatherData = styled.div`
   color: #fff;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 420px) {
+    margin-top: 20px;
+  }
 `;
 
 const Column = styled.div`
@@ -85,6 +118,20 @@ const Column = styled.div`
   img {
     width: 26px;
     margin-top: 10px;
+  }
+
+  @media (max-width: 420px) {
+    gap: 6px;
+    font-size: 18px;
+
+    span {
+      font-size: 14px;
+    }
+
+    img {
+      width: 20px;
+      margin-top: 6px;
+    }
   }
 `;
 
