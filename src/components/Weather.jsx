@@ -18,6 +18,13 @@ const WeatherContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 390px) {
+    padding: 20px;
+    
+  
+  }
+
 `;
 const SearchBar = styled.div`
   display: flex;
